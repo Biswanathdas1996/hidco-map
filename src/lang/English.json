@@ -12,10 +12,12 @@
             "find_places": "Find Places",
             "re_center": "Re-center",
             "map_view": "Map view",
-            "list_view": "List View"
+            "list_view": "List View",
+            "tour_view": "Virtual tour"
         }
     },
     "header": {
-        "home": "Home"
+        "home": "Home",
+        "back": "Back"
     }
 }

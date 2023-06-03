@@ -10,17 +10,19 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import ThreeDRotationIcon from "@mui/icons-material/ThreeDRotation";
+import ImageSlider from "./Slider";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "auto",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: 1,
+  width: "90%",
 };
 
 export default function Map({ open, onClose, ...props }) {
@@ -38,7 +40,7 @@ export default function Map({ open, onClose, ...props }) {
               <div className="desc-hldr">
                 <div>
                   <div className="img-hldr">
-                    <img src="../images/icon-profile-circled.svg" alt="" />
+                    <img src="../images/placeholder.png" alt="" />
                   </div>
                   <div className="text-hldr">
                     <p>
@@ -47,51 +49,16 @@ export default function Map({ open, onClose, ...props }) {
                     <p>{props?.clickedPlace?.name}</p>
                   </div>
                 </div>
-
-                {props?.clickedPlace?.isVisited && (
-                  <div>
-                    <div className="img-hldr">
-                      <img src="../images/icon-bookmark-circled.svg" alt="" />
-                    </div>
-                    <div className="text-hldr">
-                      <p>
-                        <strong>Comment</strong>
-                      </p>
-                      <p>{props?.clickedPlace?.visitData?.comment || ""}</p>
-                    </div>
-                  </div>
-                )}
-
-                <div>
-                  <div className="img-hldr">
-                    <img src="../images/placeholder.png" alt="" />
-                  </div>
-                  {props?.clickedPlace?.isVisited ? (
-                    <div className="text-hldr" style={{ width: 150 }}>
-                      <p>
-                        <strong>Captured at</strong>
-                      </p>
-                      <p>
-                        {dayjs(
-                          props?.clickedPlace?.visitData?.createdAt
-                        ).format("DD-MM-YYYY hh:mm A")}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="text-hldr" style={{ width: 150 }}>
-                      <p>
-                        <strong>Not visited yet</strong>
-                      </p>
-                      {/* <p>
-                        {dayjs(
-                          props?.clickedPlace?.visitData?.createdAt
-                        ).format("DD-MM-YYYY hh:mm A")}
-                      </p> */}
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
+            <ImageSlider />
+
+            <p style={{ margin: 10 }}>
+              The Zoological Garden, Alipore is India's oldest formally stated
+              zoological park and a big tourist attraction in Kolkata, West
+              Bengal. It has been open as a zoo since 1876, and covers 18.811
+              ha.
+            </p>
             {/* <Typography
               id="modal-modal-title"
               variant="h6"
@@ -166,6 +133,16 @@ export default function Map({ open, onClose, ...props }) {
             >
               <div className="text">
                 <h6>Close</h6>
+              </div>
+            </button>
+            <button
+              type="button"
+              className="admin-button"
+              style={{ float: "right", marginRight: 10, background: "#ad0004" }}
+              onClick={() => (window.location.href = "#/virtualtour")}
+            >
+              <div className="text">
+                <h6>{window.site_text("pages.map.tour_view")}</h6>
               </div>
             </button>
           </Box>

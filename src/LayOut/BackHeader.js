@@ -24,7 +24,7 @@ export default function DenseAppBar() {
             <ArrowBackIosNewIcon style={{ color: "white" }} />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-            {window.site_text(`header.home`)}
+            {window.site_text(`header.back`)}
           </Typography>
         </Toolbar>
       </AppBar>

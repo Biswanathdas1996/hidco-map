@@ -6,6 +6,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Map from "./Pages/Map";
 import NavigationIframe from "./Pages/NavigationIframe";
+import VirtualTour from "./Pages/VirtualTour";
 import VisitedPath from "./Pages/VisitedPath";
 import AddCircleToRoute from "./Pages/Admin/AddCircleToRoute";
 import ListOfRouts from "./Pages/Admin/ListOfRouts";
@@ -36,6 +37,11 @@ class Routing extends React.Component {
           exact
           path="/navigation/:source/:destinationdata"
           element={UserLayout(NavigationIframe, "back_button")}
+        />
+        <Route
+          exact
+          path="/virtualtour"
+          element={UserLayout(VirtualTour, "back_button")}
         />
         {/* <Route exact path="/home" element={UserHeaderlessLayout(Home)} /> */}
         <Route
