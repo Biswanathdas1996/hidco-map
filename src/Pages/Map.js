@@ -240,14 +240,11 @@ function Home() {
     setSelectedPoliceStation(data);
   };
 
-  const findPlace = async () => {
+  const findPlace = async (destination) => {
     const source = `${reCenterLoocation?.lat},${reCenterLoocation?.lng}`;
-    const destination = `${selectedPoliceStation?.lat},${selectedPoliceStation?.long}`;
     window.location.replace(`#/navigation/${source}/${destination}`);
-    // const newWindow = window.open("", "_blank");
-    // newWindow.location.href = `https://www.google.com/maps/dir/${selectedPoliceStation?.lat},${selectedPoliceStation?.long}/${reCenterLoocation?.lat},${reCenterLoocation?.lng}`;
   };
-  // console.log("-locations", locations?.length);
+  console.log("-0000000000000000000000locations", locations);
   // console.log("-findTotalVisitedCount", findTotalVisitedCount?.length);
   return (
     <>
@@ -281,7 +278,10 @@ function Home() {
             </div>
             <div className="time-picker-hldr">
               {locations?.slice(0, 3)?.map((data) => (
-                <div className="time-hldr">
+                <div
+                  className="time-hldr"
+                  onClick={() => findPlace(`${data?.lat},${data?.long}`)}
+                >
                   <div className="time">{data?.name}</div>
                   <div className="time-icon">
                     <img src="../images/icon-time.png" alt="" />
@@ -290,7 +290,14 @@ function Home() {
               ))}
             </div>
             <div className="container">
-              <button className="find-btn" onClick={() => findPlace()}>
+              <button
+                className="find-btn"
+                onClick={() =>
+                  findPlace(
+                    `${selectedPoliceStation?.lat},${selectedPoliceStation?.long}`
+                  )
+                }
+              >
                 <span>
                   <img src="../images/loupe.png" alt="" />
                 </span>
