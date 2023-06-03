@@ -1,0 +1,297 @@
+
+@media only screen and (max-width: 600px) {
+  .welcome {
+    align-self: flex-start;
+  }
+  .Security{
+    align-self: flex-start;
+  }
+}
+
+
+body {
+  font-family: 'Poppins';
+ font-size: 16px;
+}
+.bg-default {
+  min-width: 100%;
+  height: 14.5rem;
+  background: #AD0004;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 0 0 1rem 1rem;
+}
+
+
+.main {
+  min-width: 100%;
+  /* background: #FFFFFF; */
+  /* border-radius: 0px 0px 16px 16px; */
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+  /* padding-top: 1rem; */
+  padding: 1.5rem 3.1rem 1rem 3.1rem;
+}
+
+.welcome h6 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 150%;
+  color: #838383;
+  /* align-self: flex-start; */
+}
+
+.Security h1 {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.25rem;
+  line-height: 2.375rem;
+  color: #000000;
+  /* align-self: flex-start; */
+}
+
+.lorem {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.813rem;
+  line-height: 150%;
+  /* or 20px */
+  
+  letter-spacing: 0.01em;
+  
+  color: #646464;
+  
+  opacity: 0.6;
+}
+
+.img_map {
+    width: 374px;
+    height: 278px;
+    
+  padding-top: -6px;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px 119px; */
+    gap: 10px;
+    min-width: 50%;
+    height: 56px;
+    background: #AD0004;
+    box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+}
+
+.text {
+  /* width: 96px; */
+  height: 20px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #FFFFFF;
+}
+
+
+
+.register{
+    /* width: 362px; */
+height: 48px;
+padding-top: 1rem;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+letter-spacing: 0.01em;
+
+color: #646464;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    /* background-color: red; */
+    margin: auto;
+}
+
+.footer-nav {
+    padding: 10px 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 28px rgba(46, 49, 118, 0.1);
+    border-radius: 16px;
+    color: #BFC2C8;
+}
+
+
+/* login page css starts here */
+
+.login-button{
+
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 50%;
+    height: 56px;
+    background: #AD0004;
+    box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left:auto;
+    margin-bottom:3.125rem;
+  
+}
+
+
+.form {
+
+  padding-top: 1.5rem;
+}
+#EmployeeId{
+  box-sizing: border-box;
+  left: 12.8%;
+  right: 12.27%;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  height: 47px;
+}
+#Email{
+  box-sizing: border-box;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  height: 47px;
+}
+#Name{
+  box-sizing: border-box;
+  left: 12.8%;
+  right: 12.27%;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  height: 47px;
+}
+#ContactNumber{
+  box-sizing: border-box;
+  left: 12.8%;
+  right: 12.27%;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  height: 47px;
+}
+
+#Password{
+  box-sizing: border-box;
+  width: 371px;
+  height: 47px;
+  background: #FFFFFF;
+  border: 0.820197px solid #EEEEEE;
+  border-radius: 5px;
+  margin-top: 14px;
+}
+#ConfirmPassword{
+  box-sizing: border-box;
+  width: 371px;
+  left: 12.8%;
+  right: 12.27%;
+  height: 47px;
+  background: #FFFFFF;
+  border: 0.820197px solid #EEEEEE;
+  border-radius: 30px;
+  margin-top: 14px;
+}
+
+.pswrd{
+  padding-bottom: 2.5rem;
+
+}
+
+.icon{
+  width: 23.98px;
+  height: 14.11px;
+  left: 65px;
+  top: 565.75px;
+}
+
+.maindiv{
+  /* height: 17px; */
+  display: flex;
+  justify-content: center;
+  padding-top:2rem;
+}
+
+.forgot-passwprd-div{
+  padding: 0.7em;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+
+.forget{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4828px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.remember{
+  /* width: 130px; */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4828px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.form_toggle p{
+     font-size: 0.718rem;
+     color: rgba(0, 0, 0, 0.8);
+     white-space: nowrap;
+     margin-bottom: -2px
+}
+.switch{
+  display: flex;
+    align-items: center;
+}
+
+/* login page css ends here */
+
+
+/* icon-set for form field */
+.icon-input {
+  padding-left: 40px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+.input-email {
+  background-image: url(../images/icon-message.svg);
+}
+.input-password {
+  /* background: url(../images/icon-lock.svg); */
+  padding-right: 30px;
+  background-image: url(../images/icon-lock.svg) !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-position: 10px center, 98% center !important;
+}

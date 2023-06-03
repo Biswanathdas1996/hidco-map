@@ -1,0 +1,183 @@
+.bg-default {
+    min-width: 100%;
+    height: 8.5rem;
+    background: #AD0004;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 0 0 1rem 1rem;
+    padding: 1.5rem;
+}
+
+.profile-dtl {
+    padding-top: 30px;
+}
+
+.desc-hldr {
+    color: #F3F7FF;
+}
+
+.map-hldr {
+    background: #FFFFFF;
+    box-shadow: -1px 2px 7px rgba(46, 49, 118, 0.1);
+    border-radius: 16px;
+    position: relative;
+    top: 0;
+}
+
+.icon {
+    background: #EEEEEE;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.body {
+    font-family: 'Poppins';
+    font-size: 16px;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 11px;
+    color: #6B7280;
+}
+
+.values p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.005em;
+    color: #6B7280;
+}
+
+.cards {
+    background: #343E42;
+    border-radius: 10px;
+    width: 252px;
+    height: 64px;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 26px;
+    letter-spacing: 0.005em;
+    color: #AD0004;
+}
+
+/* routecard css starts here */
+.grey-location {
+    padding: 0 20px;
+    position: relative;
+    top: -30px;
+}
+
+.routecard {
+    background-color: #F0F0F0;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.routecard p {
+    margin-bottom: 0;
+}
+
+.bg-map {
+    background-image: url(../images/map-image.png);
+}
+
+.red-header thead th {
+    color: #FFFFFF;
+    background-color: #AD0004;
+    padding: 15px 10px;
+}
+
+.red-header thead th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.red-header thead th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+.red-header tbody td {
+    padding: 15px 10px;
+}
+.red-header tbody td:first-child {
+    border-left: 5px solid #D9D9D9;
+}
+.red-header tr.active td:first-child {
+    border-left-color: #039F2F ;
+}
+/* .red-header tr.active td:first-child::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #039F2F;
+    border: 2px solid #F4F4F4;
+    position: absolute;
+    z-index: 10;
+    left: 7px;
+} */
+.red-circle {
+    border-radius: 100%;
+    background-color: #AD0004;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+
+}
+
+.red-circle img {
+    max-width: 28px;
+    max-height: 28px;
+}
+
+.text-black {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+
+    color: #343E42;
+}
+
+.text-black-sm {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    color: #343E42;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    margin: auto;
+}
+
+.footer-nav {
+    padding: 10px 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 28px rgba(46, 49, 118, 0.1);
+    border-radius: 16px;
+    color: #BFC2C8;
+}
+
+.capture-submit-btn{
+    margin: 1rem;
+    color: white;
+    background: #ad0004;
+    border: 1px solid #ad0004;
+    padding: 15px;
+    border-radius: 15px;
+}

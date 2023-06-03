@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Place 1",
+        "image": "https://img.traveltriangle.com/blog/wp-content/uploads/2020/01/temples-in-India_8th-jan1.jpg",
+        "radius": 500,
+        "center": {
+            "lat": 22.571695590417033,
+            "lng": 88.50591509173454
+        },
+        "visited": {
+            "status": true,
+            "data": {
+                "image": "https://cdn.enjoytravel.com/img/travel-news/disneyland-selfie.jpg",
+                "time": "22-04-2023 : 10:49 AM"
+            }
+        }
+    },
+    {
+        "name": "Place 2",
+        "image": "https://ramanit.in/wp-content/uploads/2019/11/10-temples-southern-india-hero-2-655x313.jpg",
+        "radius": 400,
+        "center": {
+            "lat": 22.581905590677033,
+            "lng": 88.50591509173454
+        },
+        "visited": {
+            "status": true,
+            "data": {
+                "image": "https://cdn.enjoytravel.com/img/travel-news/disneyland-selfie.jpg",
+                "time": "22-04-2023 : 10:49 AM"
+            }
+        }
+    },
+    {
+        "name": "Place 2",
+        "image": "https://ramanit.in/wp-content/uploads/2019/11/10-temples-southern-india-hero-2-655x313.jpg",
+        "radius": 400,
+        "center": {
+            "lat": 22.54997677339611,
+            "lng": 88.52130889892578
+        },
+        "visited": {
+            "status": false
+        }
+    },
+    {
+        "name": "Place 2",
+        "image": "https://ramanit.in/wp-content/uploads/2019/11/10-temples-southern-india-hero-2-655x313.jpg",
+        "radius": 400,
+        "center": {
+            "lat": 22.559567932850598,
+            "lng": 88.49538803100586
+        },
+        "visited": {
+            "status": false
+        }
+    }
+]

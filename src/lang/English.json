@@ -1,0 +1,21 @@
+{
+    "pages": {
+        "landing": {
+            "explore": "Explore",
+            "about": "About",
+            "welcome_text": "Welcome To",
+            "welcome_header_text": "The Alipore Museum",
+            "welcome_header_sub_text": "The heritage sites of Kolkata. Constructed in 1906",
+            "welcome_header_bottom_text": "This 116 year old building, along with the Presidency Jail, is on the Grade I list of heritage sites of Kolkata. Constructed in 1906"
+        },
+        "map": {
+            "find_places": "Find Places",
+            "re_center": "Re-center",
+            "map_view": "Map view",
+            "list_view": "List View"
+        }
+    },
+    "header": {
+        "home": "Home"
+    }
+}

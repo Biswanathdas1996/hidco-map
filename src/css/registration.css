@@ -1,0 +1,228 @@
+.bg-default {
+  min-width: 100%;
+  height: 232px;
+  background: #AD0004;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  border-radius: 0 0 16px 16px;
+}
+
+body {
+  font-family: 'Poppins';
+  font-size: 16px;
+}
+
+.main {
+  min-width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 3.1rem 1rem 3.1rem;
+}
+
+.welcome h6 {
+  color: #F8F8F8;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 150%;
+}
+
+.Security h1 {
+  color: #F8F8F8;
+  font-weight: 700;
+  font-size: 1.18rem;
+  line-height: 125%;
+}
+
+.Register h1 {
+  color: #F8F8F8;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.313rem;
+
+}
+
+.bg-white {
+  background: white;
+  border-radius: 1rem;
+  position: relative;
+  padding: 1.688rem 1.25rem 1.688rem 1.25rem;
+  box-shadow: 0px 0.25rem 1.75rem rgba(46, 49, 118, 0.1);
+}
+
+
+.form {
+  background: #FFFFFF;
+  box-shadow: 0px 0.25rem 1.75rem rgba(46, 49, 118, 0.1);
+  border-radius: 16px;
+}
+
+#EmployeeId {
+  box-sizing: border-box;
+  left: 12.8%;
+  right: 12.27%;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  height: 47px;
+  filter: drop-shadow(0px 0.28px 3.28079px rgba(0, 0, 0, 0.25));
+}
+
+#InputEmail1 {
+  box-sizing: border-box;
+  /* background: url('../images/envelope.svg');
+    background-repeat:no-repeat;
+    background-position:right 30px bottom 15px; */
+}
+
+#Name {
+  box-sizing: border-box;
+  left: 12.8%;
+  right: 12.27%;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  height: 47px;
+  filter: drop-shadow(0px 0.28px 3.28079px rgba(0, 0, 0, 0.25));
+}
+
+#ContactNumber {
+  box-sizing: border-box;
+  left: 12.8%;
+  right: 12.27%;
+  width: 371px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  height: 47px;
+  filter: drop-shadow(0px 0.28px 3.28079px rgba(0, 0, 0, 0.25));
+}
+
+#Password {
+  box-sizing: border-box;
+  width: 371px;
+  left: 12.8%;
+  right: 12.27%;
+  height: 47px;
+  background: #FFFFFF;
+  border: 0.820197px solid #EEEEEE;
+  border-radius: 30px;
+  margin-top: 14px;
+  filter: drop-shadow(0px 0.28px 3.28079px rgba(0, 0, 0, 0.25));
+}
+
+#ConfirmPassword {
+  box-sizing: border-box;
+  width: 371px;
+  left: 12.8%;
+  right: 12.27%;
+  height: 47px;
+  background: #FFFFFF;
+  border: 0.820197px solid #EEEEEE;
+  border-radius: 30px;
+  margin-top: 14px;
+  filter: drop-shadow(0px 0.28px 3.28079px rgba(0, 0, 0, 0.25));
+}
+
+
+.button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button button {
+  position: relative;
+  width: 213px;
+  height: 56px;
+  text-align: center;
+  background: #AD0004;
+  /* box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.16); */
+  border-radius: 10px;
+  color: white !important;
+
+}
+
+.text {
+  width: 96px;
+  height: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #FFFFFF;
+}
+
+.camera-icon {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 10px;
+  /* background-color: red; */
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.footer-nav {
+  padding: 10px 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 28px rgba(46, 49, 118, 0.1);
+  border-radius: 16px;
+  color: #BFC2C8;
+}
+
+
+.textinput {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 125%;
+  text-align: center;
+  color: #000000;
+}
+
+/* icon-set for form field */
+.icon-input {
+  padding-left: 40px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.input-email {
+  background-image: url(../images/icon-message.svg);
+}
+
+.input-eid {
+  background-image: url(../images/icon-id.svg);
+}
+
+.input-uid {
+  background-image: url(../images/icon-user.svg);
+}
+
+.input-ctno {
+  background-image: url(../images/icon-contact.svg);
+}
+
+
+.input-password {
+  /* background: url(../images/icon-lock.svg); */
+  padding-right: 30px;
+  background-image: url(../images/icon-lock.svg) !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-position: 10px center, 98% center !important;
+}

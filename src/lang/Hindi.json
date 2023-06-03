@@ -1,0 +1,22 @@
+{
+    "pages": {
+        "home": {
+            "join_duty": "JOIN DUTY",
+            "todats_route_text": "Today's Routes",
+            "view_all": "All"
+        },
+        "landing": {
+            "sign_in": "Sign In",
+            "register": "Register"
+        },
+        "register": {
+            "emp_ID": "Emp ID",
+            "name": "Name",
+            "email": "Email",
+            "contact": "Contact Number",
+            "password": "Password",
+            "confirm_passowrd": "Confirm Password",
+            "button": "Register"
+        }
+    }
+}

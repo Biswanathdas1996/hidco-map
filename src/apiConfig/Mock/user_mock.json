@@ -1,0 +1,66 @@
+{
+    "success": true,
+    "status": 200,
+    "message": "SUCCESSFUL",
+    "data": {
+        "count": 7,
+        "rows": [
+            {
+                "id": 8,
+                "name": "User 1",
+                "empID": "OP5096807896",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T08:41:38.567Z"
+            },
+            {
+                "id": 7,
+                "name": "User 1",
+                "empID": "OP596807896",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T08:39:26.806Z"
+            },
+            {
+                "id": 6,
+                "name": "User 1",
+                "empID": "OP59687896",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T08:38:36.646Z"
+            },
+            {
+                "id": 5,
+                "name": "User 1",
+                "empID": "OP5687896",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T08:37:47.483Z"
+            },
+            {
+                "id": 4,
+                "name": "User 1",
+                "empID": "OP567896",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T08:37:14.249Z"
+            },
+            {
+                "id": 3,
+                "name": "User 1",
+                "empID": "OP-1234567896",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T07:22:06.399Z"
+            },
+            {
+                "id": 2,
+                "name": "Hollee Preston",
+                "empID": "11122567",
+                "isApproved": true,
+                "status": true,
+                "createdAt": "2023-04-26T06:05:28.589Z"
+            }
+        ]
+    }
+}
