@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { get, post, del } from "../../helper/apiHelper";
 import { validateResponseAdmin } from "../../helper/validateResponse";
 import AddCircleToRoutsView from "../../View/Admin/AddCircleToRoute";
+import swal from "sweetalert";
 
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
@@ -68,6 +69,7 @@ export default function BasicModal() {
           long: selectLocation?.lng,
           radius: Number(radius),
           locationTypeId: Number(selectedLocationTypeId),
+          files: [],
         },
       ],
     };
@@ -78,29 +80,50 @@ export default function BasicModal() {
   };
 
   const deletLocation = async (id) => {
-    const response = await del(`/admin/route/location/${id}`);
-    if (validateResponseAdmin(response)) {
-      window.location.reload();
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        setLoding(true);
+        const response = await del(`/admin/route/location/${id}`);
+        if (validateResponseAdmin(response)) {
+          window.location.reload();
+        } else {
+          setLoding(false);
+        }
+      }
+    });
   };
 
   return (
-    <AddCircleToRoutsView
-      open={open}
-      handleClose={handleClose}
-      selectLocation={selectLocation}
-      updatedPointer={updatedPointer}
-      setName={setName}
-      radius={radius}
-      setRadius={setRadius}
-      addPlace={addPlace}
-      routeData={routeData}
-      handleClick={handleClick}
-      choosedLocation={choosedLocation}
-      deletLocation={deletLocation}
-      handleMapClick={handleMapClick}
-      selectedPoliceStationCallback={selectedPoliceStationCallback}
-      loding={loding}
-    />
+    <>
+      {!loding ? (
+        <AddCircleToRoutsView
+          open={open}
+          handleClose={handleClose}
+          selectLocation={selectLocation}
+          updatedPointer={updatedPointer}
+          setName={setName}
+          radius={radius}
+          setRadius={setRadius}
+          addPlace={addPlace}
+          routeData={routeData}
+          handleClick={handleClick}
+          choosedLocation={choosedLocation}
+          deletLocation={deletLocation}
+          handleMapClick={handleMapClick}
+          selectedPoliceStationCallback={selectedPoliceStationCallback}
+          loding={loding}
+        />
+      ) : (
+        <center style={{ width: "auto", height: "60vh", paddingTop: "10rem" }}>
+          <div className="loader"></div>
+        </center>
+      )}
+    </>
   );
 }

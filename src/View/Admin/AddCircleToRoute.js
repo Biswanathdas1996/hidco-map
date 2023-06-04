@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import ListOfRoutes from "../../components/ListOfRoutes";
 import AutocompliteInput from "../../components/AutocompliteInput";
 import AddCircleMap from "./AddCircleMap";
+import { validateResponseUser } from "../../helper/validateResponse";
+import { get } from "../../helper/apiHelper";
 
 const style = {
   position: "absolute",
@@ -18,17 +20,6 @@ const style = {
   boxShadow: 24,
   p: 2,
 };
-
-const sampleData = [
-  {
-    id: 1,
-    name: "Toilet",
-  },
-  {
-    id: 2,
-    name: "Place",
-  },
-];
 
 const AddCircleToRoutsView = ({
   open,
@@ -48,7 +39,8 @@ const AddCircleToRoutsView = ({
   loding,
 }) => {
   const [markerLocation, setSelectMarkerLocation] = React.useState(null);
-  const [locationType, setLocationsType] = React.useState(sampleData);
+  const [locationType, setLocationsType] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -60,10 +52,23 @@ const AddCircleToRoutsView = ({
     });
   };
 
+  const fetchData = async () => {
+    setLoading(true);
+
+    const responseLocationType = await get(`/getLocationTypes`);
+    if (validateResponseUser(responseLocationType)) {
+      setLoading(false);
+      setLocationsType(responseLocationType?.data);
+    } else {
+      setLoading(false);
+    }
+  };
+
   let watchId;
 
   React.useEffect(() => {
     getCurrentLocation();
+    fetchData();
   }, []);
 
   const trackFetchLocation = () => {
@@ -101,10 +106,14 @@ const AddCircleToRoutsView = ({
             <MapForm markers={null} updatedPointer={updatedPointer} />
           )}
           <br />
-          <AutocompliteInput
-            data={locationType}
-            onchangeCallback={selectedPoliceStationCallback}
-          />
+          {!loading ? (
+            <AutocompliteInput
+              data={locationType}
+              onchangeCallback={selectedPoliceStationCallback}
+            />
+          ) : (
+            <b>Please wait...</b>
+          )}
 
           <TextField
             id="outlined-basic"

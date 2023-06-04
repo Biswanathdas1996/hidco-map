@@ -12,10 +12,16 @@
             "find_places": "স্থান খুঁজুন",
             "re_center": "পুনরায় কেন্দ্রে",
             "map_view": "মানচিত্র দেখুন",
-            "list_view": "তালিকা দেখুন"
+            "list_view": "তালিকা দেখুন",
+            "tour_view": "ভার্চুয়াল ট্যুর",
+            "from_where": "কোথা থেকে?",
+            "to_where": "কোথায়?",
+            "currnt_location": "আপনার বর্তমান অবস্থান",
+            "custom_location": "কাস্টম"
         }
     },
     "header": {
-        "home": "ফিরে যাও"
+        "home": "হোম",
+        "back": "ফিরে যাও"
     }
 }

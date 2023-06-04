@@ -1,14 +1,10 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
-import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import Button from "@mui/material/Button";
 import { get, post } from "../helper/apiHelper";
 import { validateResponseAdmin } from "../helper/validateResponse";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import FilterSelectBox from "./FilterSelectBox";
 import AutocompliteInput from "./AutocompliteInput";
 
 export default function Filter({ routeId, onClose }) {

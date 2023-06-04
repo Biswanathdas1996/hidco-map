@@ -71,7 +71,7 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex flex-column h-100">
+    <div className="flex-column h-100">
       <div className="main container">
         <div className="welcome">
           <h6>Welcome To</h6>
@@ -155,7 +155,7 @@ const Login = () => {
                   >
                     <button type="button" className="btn" style={{ margin: 0 }}>
                       <div className="text">
-                        <h6>{window.site_text("pages.landing.sign_in")}</h6>
+                        <h6>Log in</h6>
                       </div>
                     </button>
                   </div>

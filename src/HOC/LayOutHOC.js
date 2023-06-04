@@ -7,7 +7,7 @@ import BackHeader from "../LayOut/BackHeader";
 export function AdminLayout(Body) {
   return (
     <>
-      <div className="d-flex flex-column h-100">
+      <div className="flex-column h-100">
         <div
           className="bg-default"
           style={{ zIndex: 0, height: "10.5rem" }}

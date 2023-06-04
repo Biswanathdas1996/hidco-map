@@ -11,9 +11,6 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
-import AutocompliteInput from "../components/AutocompliteInput";
-import FormControl from "@mui/material/FormControl";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { get } from "../helper/apiHelper";
 
@@ -242,7 +239,7 @@ function Home() {
 
   const findPlace = async (destination) => {
     const source = `${reCenterLoocation?.lat},${reCenterLoocation?.lng}`;
-    window.location.replace(`#/navigation/${source}/${destination}`);
+    window.location.href = `#/navigation/${source}/${destination}`;
   };
   console.log("-0000000000000000000000locations", locations);
   // console.log("-findTotalVisitedCount", findTotalVisitedCount?.length);
@@ -266,7 +263,7 @@ function Home() {
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider", margin: 2 }}>
           <div className="container find-duty-hldr mb-4">
-            <div className="datepicker">
+            {/* <div className="datepicker">
               <div className="mb-3 mt-0">
                 <FormControl size="small" fullWidth>
                   <AutocompliteInput
@@ -275,7 +272,7 @@ function Home() {
                   />
                 </FormControl>
               </div>
-            </div>
+            </div> */}
             <div className="time-picker-hldr">
               {locations?.slice(0, 3)?.map((data) => (
                 <div

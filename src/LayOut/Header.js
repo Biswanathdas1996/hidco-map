@@ -16,7 +16,10 @@ function ResponsiveAppBar() {
   console.log("--user-->", user);
 
   return (
-    <div className="row profile-dtl">
+    <div
+      className="row profile-dtl"
+      style={{ zIndex: 1, position: "relative" }}
+    >
       <div className="col-2">
         <div className="img-hldr">
           {user?.image ? (
@@ -37,7 +40,7 @@ function ResponsiveAppBar() {
           <h2>
             <strong>{user?.name}</strong>
           </h2>
-          <p>{user?.designation}</p>
+          <p>Administrator</p>
         </div>
       </div>
       <div className="col-2">

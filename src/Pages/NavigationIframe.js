@@ -13,6 +13,7 @@ import FormLabel from "@mui/material/FormLabel";
 
 export const MAP_KEY = "AIzaSyAet8Mk1nPvOn_AebLE5ZxXoGejOD8tPzA";
 
+let watchId;
 const MapWithDirections = () => {
   const { source, destinationdata } = useParams();
 
@@ -20,9 +21,9 @@ const MapWithDirections = () => {
   const [loading, setLoading] = React.useState(false);
   const [selectedSource, setSelectedSource] = React.useState(null);
   const [selectedDestination, setSelectedDestination] = React.useState(null);
-
+  const [reCenterLoocation, setReCenterLoocation] = React.useState(null);
   const [value, setValue] = React.useState(null);
-
+  const [marker, setMarker] = React.useState(null);
   const handleChange = (event) => {
     if (event.target.value === "0") {
       getCurrentLocation();
@@ -52,6 +53,10 @@ const MapWithDirections = () => {
         lat: latitude,
         long: longitude,
       });
+      setReCenterLoocation({
+        lat: latitude,
+        lng: longitude,
+      });
     });
   };
 
@@ -75,6 +80,33 @@ const MapWithDirections = () => {
     fetchData();
   }, []);
 
+  // --------------------------------------------------Live tracking ------------
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const trackFetchLocation = () => {
+    watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const positionData = { lat: latitude, lng: longitude };
+        setReCenterLoocation(positionData);
+        marker && marker.setPosition(positionData);
+        setLoading(false);
+      },
+      (error) => console.log(error),
+      { enableHighAccuracy: true, maximumAge: 20000, timeout: 10000 }
+    );
+  };
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      trackFetchLocation();
+    }, 3000);
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+      clearInterval(intervalId);
+    };
+  }, [trackFetchLocation]);
+
   useEffect(() => {
     // Load the Google Maps JavaScript API script dynamically
     const script = document.createElement("script");
@@ -94,6 +126,10 @@ const MapWithDirections = () => {
     };
   }, [destinationdata, source]);
 
+  useEffect(() => {
+    reCenterLoocation && marker && marker.setPosition(reCenterLoocation);
+  }, [reCenterLoocation, marker]);
+
   const initMap = () => {
     const directionsService = new window.google.maps.DirectionsService();
     const directionsRenderer = new window.google.maps.DirectionsRenderer();
@@ -101,9 +137,24 @@ const MapWithDirections = () => {
       center: { lat: 22.56025627345084, lng: 88.5176386170709 },
       zoom: 15,
     });
-    directionsRenderer.setMap(map);
 
-    console.log("source", source);
+    const marker =
+      reCenterLoocation &&
+      new window.google.maps.Marker({
+        position: reCenterLoocation, // Marker position
+        icon: {
+          url: `https://maps.google.com/mapfiles/kml/paddle/purple-stars.png`,
+        },
+        map, // Map instance
+        label: {
+          text: "You are here",
+          color: "black",
+          fontSize: "12px",
+          fontWeight: "bold",
+        },
+      });
+    setMarker(marker);
+    directionsRenderer.setMap(map);
 
     const sourceSplit = source.split(",");
     const destinationdataSplit = destinationdata.split(",");
@@ -142,7 +193,7 @@ const MapWithDirections = () => {
             <div className="container find-duty-hldr mb-4">
               <FormControl>
                 <FormLabel id="demo-controlled-radio-buttons-group">
-                  Where from?
+                  <b> {window.site_text(`pages.map.from_where`)}</b>
                 </FormLabel>
                 <RadioGroup
                   row
@@ -154,12 +205,12 @@ const MapWithDirections = () => {
                   <FormControlLabel
                     value="0"
                     control={<Radio />}
-                    label="Current location"
+                    label={window.site_text(`pages.map.currnt_location`)}
                   />
                   <FormControlLabel
                     value="1"
                     control={<Radio />}
-                    label="Custom"
+                    label={window.site_text(`pages.map.custom_location`)}
                   />
                 </RadioGroup>
               </FormControl>
@@ -178,7 +229,7 @@ const MapWithDirections = () => {
               )}
 
               <FormLabel id="demo-controlled-radio-buttons-group">
-                Where to?
+                <b>{window.site_text(`pages.map.to_where`)}</b>
               </FormLabel>
               <div className="datepicker">
                 <div className="mb-3 mt-0">
