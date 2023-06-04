@@ -5,11 +5,8 @@ import AutocompliteInput from "../components/AutocompliteInput";
 import FormControl from "@mui/material/FormControl";
 import { get } from "../helper/apiHelper";
 import { validateResponseUser } from "../helper/validateResponse";
-
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
+import { useLocation } from "react-router-dom";
+import SearchPlaces from "../components/SearchPlaces";
 
 export const MAP_KEY = "AIzaSyAet8Mk1nPvOn_AebLE5ZxXoGejOD8tPzA";
 
@@ -17,48 +14,15 @@ let watchId;
 const MapWithDirections = () => {
   const { source, destinationdata } = useParams();
 
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const sourcePlaceID = params.get("sourcePlaceID");
+  const destinationPlaceId = params.get("destinationPlaceId");
+
   const [locations, setLocations] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  const [selectedSource, setSelectedSource] = React.useState(null);
-  const [selectedDestination, setSelectedDestination] = React.useState(null);
   const [reCenterLoocation, setReCenterLoocation] = React.useState(null);
-  const [value, setValue] = React.useState(null);
   const [marker, setMarker] = React.useState(null);
-  const handleChange = (event) => {
-    if (event.target.value === "0") {
-      getCurrentLocation();
-    }
-    setValue(event.target.value);
-  };
-
-  const selectSourceLocation = (data) => {
-    console.log(data);
-    setSelectedSource(data);
-  };
-  const selectDestinationLocation = (data) => {
-    console.log(data);
-    setSelectedDestination(data);
-  };
-
-  const findPlace = async () => {
-    const source = `${selectedSource?.lat},${selectedSource?.long}`;
-    const destination = `${selectedDestination?.lat},${selectedDestination?.long}`;
-    window.location.replace(`#/navigation/${source}/${destination}`);
-  };
-
-  const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      setSelectedSource({
-        lat: latitude,
-        long: longitude,
-      });
-      setReCenterLoocation({
-        lat: latitude,
-        lng: longitude,
-      });
-    });
-  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -70,7 +34,6 @@ const MapWithDirections = () => {
         (route) => route.locations
       );
       setLocations(allLocations);
-      console.log("allLocations====>", allLocations);
     } else {
       setLoading(false);
     }
@@ -189,71 +152,13 @@ const MapWithDirections = () => {
     <>
       {!loading ? (
         <>
-          <Box sx={{ borderBottom: 1, borderColor: "divider", margin: 2 }}>
-            <div className="container find-duty-hldr mb-4">
-              <FormControl>
-                <FormLabel id="demo-controlled-radio-buttons-group">
-                  <b> {window.site_text(`pages.map.from_where`)}</b>
-                </FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-controlled-radio-buttons-group"
-                  name="controlled-radio-buttons-group"
-                  value={value}
-                  onChange={handleChange}
-                >
-                  <FormControlLabel
-                    value="0"
-                    control={<Radio />}
-                    label={window.site_text(`pages.map.currnt_location`)}
-                  />
-                  <FormControlLabel
-                    value="1"
-                    control={<Radio />}
-                    label={window.site_text(`pages.map.custom_location`)}
-                  />
-                </RadioGroup>
-              </FormControl>
-              <br />
-              {value && value !== "0" && (
-                <div className="datepicker">
-                  <div className="mb-3 mt-0">
-                    <FormControl size="small" fullWidth>
-                      <AutocompliteInput
-                        data={locations}
-                        onchangeCallback={selectSourceLocation}
-                      />
-                    </FormControl>
-                  </div>
-                </div>
-              )}
-
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <b>{window.site_text(`pages.map.to_where`)}</b>
-              </FormLabel>
-              <div className="datepicker">
-                <div className="mb-3 mt-0">
-                  <FormControl size="small" fullWidth>
-                    <AutocompliteInput
-                      data={locations}
-                      onchangeCallback={selectDestinationLocation}
-                    />
-                  </FormControl>
-                </div>
-              </div>
-
-              <div className="container">
-                <button className="find-btn" onClick={() => findPlace()}>
-                  <span>
-                    <img src="../images/loupe.png" alt="" />
-                  </span>
-                  <div className="txt-hldr pl-3" style={{ color: "white" }}>
-                    {window.site_text(`pages.map.find_places`)}
-                  </div>
-                </button>
-              </div>
-            </div>
-          </Box>
+          {locations && (
+            <SearchPlaces
+              locations={locations}
+              destinationPlaceId={destinationPlaceId}
+              sourcePlaceID={sourcePlaceID}
+            />
+          )}
         </>
       ) : (
         <center style={{ width: "auto", height: "30vh", paddingTop: "4rem" }}>

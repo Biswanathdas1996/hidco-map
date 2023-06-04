@@ -6,6 +6,7 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import { useSelector } from "react-redux";
+import ThreeDRotationIcon from "@mui/icons-material/ThreeDRotation";
 
 const englishAudio = new Audio(VoiceFileEnglish);
 
@@ -83,11 +84,38 @@ export default function FolderList() {
             </center>
           </div>
         </div>
+
         <div className="register" style={{ marginTop: 15 }}>
           <h6>
             {window.site_text(`pages.landing.welcome_header_bottom_text`)}
           </h6>
         </div>
+        <center>
+          <button
+            type="button"
+            className="admin-close-button"
+            style={{
+              width: "100%",
+              marginTop: "6rem",
+            }}
+            onClick={() => (window.location.href = "#/virtualtour")}
+          >
+            <div
+              className="text"
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "center",
+              }}
+            >
+              <ThreeDRotationIcon style={{ marginRight: 10 }} />
+              {` `}
+              <h6 style={{ marginLeft: 5, marginTop: 3 }}>
+                {window.site_text("pages.map.tour_view")}
+              </h6>
+            </div>
+          </button>
+        </center>
       </div>
     </div>
   );

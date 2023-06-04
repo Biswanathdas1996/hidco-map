@@ -4,8 +4,12 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 const filter = createFilterOptions();
 
-export default function FreeSoloCreateOption({ data, onchangeCallback }) {
-  const [value, setValue] = React.useState(null);
+export default function FreeSoloCreateOption({
+  data,
+  onchangeCallback,
+  defaultValue = null,
+}) {
+  const [value, setValue] = React.useState(defaultValue);
 
   return (
     <Autocomplete
@@ -66,7 +70,7 @@ export default function FreeSoloCreateOption({ data, onchangeCallback }) {
       renderOption={(props, option) => <li {...props}>{option.name}</li>}
       sx={{ width: "100%" }}
       freeSolo
-      renderInput={(params) => <TextField {...params} />}
+      renderInput={(params) => <TextField {...params} label="" />}
     />
   );
 }

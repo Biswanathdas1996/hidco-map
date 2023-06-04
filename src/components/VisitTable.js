@@ -18,8 +18,8 @@ export default function VisitListTable({ locations, handleOpen }) {
           </tr>
         </thead>
         <tbody>
-          {reversedArray &&
-            reversedArray?.map((val) => {
+          {locations &&
+            locations?.map((val) => {
               return (
                 <tr
                   className={val?.isVisited ? "active" : ""}

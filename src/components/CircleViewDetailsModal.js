@@ -10,7 +10,7 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
-import ThreeDRotationIcon from "@mui/icons-material/ThreeDRotation";
+
 import ImageSlider from "./Slider";
 
 const style = {
@@ -25,7 +25,15 @@ const style = {
   width: "90%",
 };
 
-export default function Map({ open, onClose, ...props }) {
+export default function Map({ open, onClose, currentLocation, ...props }) {
+  console.log("---------props-->", props?.clickedPlace);
+
+  const findPlace = async () => {
+    const source = `${currentLocation?.lat},${currentLocation?.lng}`;
+    const destination = `${props?.clickedPlace?.lat},${props?.clickedPlace?.long}`;
+    window.location.href = `#/navigation/${source}/${destination}?sourcePlaceID=&destinationPlaceId=${props?.clickedPlace?.id}`;
+  };
+
   return (
     <>
       <div>
@@ -68,7 +76,7 @@ export default function Map({ open, onClose, ...props }) {
               <b></b>
               <p>
                 
-              </p>
+              </p> 
             </Typography> */}
 
             {props?.clickedPlace?.isVisited && (
@@ -139,10 +147,10 @@ export default function Map({ open, onClose, ...props }) {
               type="button"
               className="admin-button"
               style={{ float: "right", marginRight: 10, background: "#ad0004" }}
-              onClick={() => (window.location.href = "#/virtualtour")}
+              onClick={() => findPlace()}
             >
-              <div className="text">
-                <h6>{window.site_text("pages.map.tour_view")}</h6>
+              <div className="text" style={{ width: "100%" }}>
+                <h6>{window.site_text("pages.map.take_me_there")}</h6>
               </div>
             </button>
           </Box>

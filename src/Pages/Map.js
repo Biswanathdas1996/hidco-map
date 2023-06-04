@@ -237,9 +237,9 @@ function Home() {
     setSelectedPoliceStation(data);
   };
 
-  const findPlace = async (destination) => {
+  const findPlace = async (destination, destinationId = null) => {
     const source = `${reCenterLoocation?.lat},${reCenterLoocation?.lng}`;
-    window.location.href = `#/navigation/${source}/${destination}`;
+    window.location.href = `#/navigation/${source}/${destination}?sourcePlaceID=&destinationPlaceId=${destinationId}`;
   };
   console.log("-0000000000000000000000locations", locations);
   // console.log("-findTotalVisitedCount", findTotalVisitedCount?.length);
@@ -250,6 +250,7 @@ function Home() {
           open={open}
           onClose={handleClose}
           clickedPlace={clickedPlace}
+          currentLocation={reCenterLoocation}
         />
 
         {liveCenter && (
@@ -277,7 +278,9 @@ function Home() {
               {locations?.slice(0, 3)?.map((data) => (
                 <div
                   className="time-hldr"
-                  onClick={() => findPlace(`${data?.lat},${data?.long}`)}
+                  onClick={() =>
+                    findPlace(`${data?.lat},${data?.long}`, data?.id)
+                  }
                 >
                   <div className="time">{data?.name}</div>
                   <div className="time-icon">
@@ -323,7 +326,7 @@ function Home() {
         </Box>
         <TabPanel value={value} index={0}>
           <div style={{ width: "auto", height: "60vh" }}>
-            {!loading && locations ? (
+            {!loading && locations && reCenterLoocation ? (
               <Map
                 defaultCenter={reCenterLoocation}
                 defaultZoom={16}
