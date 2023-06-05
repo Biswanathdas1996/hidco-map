@@ -13,7 +13,7 @@ export default function VisitListTable({ locations, handleOpen }) {
         <thead>
           <tr>
             <th scope="col">Location</th>
-            <th scope="col">Time</th>
+
             <th scope="col">Track</th>
           </tr>
         </thead>
@@ -26,13 +26,7 @@ export default function VisitListTable({ locations, handleOpen }) {
                   key={val?.name + val?.id}
                 >
                   <td>{val?.name}</td>
-                  <td>
-                    {val?.isVisited
-                      ? `${dayjs(new Date(val?.visitData?.createdAt)).format(
-                          "DD-MM-YYYY hh:mm A"
-                        )}`
-                      : "Not Visited"}
-                  </td>
+
                   <td>
                     <img
                       src="../images/placeholder.png"

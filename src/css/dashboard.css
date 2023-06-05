@@ -22,7 +22,7 @@
     padding: 30px;
     position: relative;
 }
-.find-duty-hldr::before {
+/* .find-duty-hldr::before {
     content: "";
     width: 51px;
     height: 52px;
@@ -30,8 +30,8 @@
     background: url(../images/ellipse-left.png);
     left: -28px;
     top: 43%;
-}
-.find-duty-hldr::after {
+} */
+/* .find-duty-hldr::after {
     content: "";
     width: 51px;
     height: 52px;
@@ -39,7 +39,7 @@
     background: url(../images/ellipse-right.png);
     right: -12px;
     top: 43%;
-}
+} */
 
 .time-picker-hldr {
     display: flex;

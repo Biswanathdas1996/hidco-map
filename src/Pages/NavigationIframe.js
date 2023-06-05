@@ -7,6 +7,9 @@ import { get } from "../helper/apiHelper";
 import { validateResponseUser } from "../helper/validateResponse";
 import { useLocation } from "react-router-dom";
 import SearchPlaces from "../components/SearchPlaces";
+import HorizontalPlaceScroll from "../components/HorizontalPlaceScroll";
+import Compass from "../components/Compass";
+import Fab from "@mui/material/Fab";
 
 export const MAP_KEY = "AIzaSyAet8Mk1nPvOn_AebLE5ZxXoGejOD8tPzA";
 
@@ -117,6 +120,7 @@ const MapWithDirections = () => {
         },
       });
     setMarker(marker);
+
     directionsRenderer.setMap(map);
 
     const sourceSplit = source.split(",");
@@ -148,11 +152,28 @@ const MapWithDirections = () => {
     });
   };
 
+  const findPlace = (destination, destinationId = null) => {
+    setLoading(true);
+    setTimeout(() => {
+      const source = `${reCenterLoocation?.lat},${reCenterLoocation?.lng}`;
+      window.location.href = `#/navigation/${source}/${destination}?sourcePlaceID=&destinationPlaceId=${destinationId}`;
+      setLoading(false);
+    }, 1000);
+  };
+
   return (
     <>
       {!loading ? (
         <>
-          {locations && (
+          <div style={{ marginTop: 20 }}>
+            {locations && (
+              <HorizontalPlaceScroll
+                locations={locations}
+                findPlace={findPlace}
+              />
+            )}
+          </div>
+          {locations && !loading && (
             <SearchPlaces
               locations={locations}
               destinationPlaceId={destinationPlaceId}
@@ -166,6 +187,20 @@ const MapWithDirections = () => {
         </center>
       )}
       <div id="map" style={{ width: "100%", height: "600px" }} />
+      <br />
+      <br />
+      <br />
+      <Fab
+        color="secondary"
+        aria-label="add"
+        style={{
+          bottom: "-18rem",
+          right: "35%",
+          position: "absolute",
+        }}
+      >
+        <Compass />
+      </Fab>
     </>
   );
 };

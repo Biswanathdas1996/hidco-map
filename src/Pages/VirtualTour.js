@@ -4,7 +4,7 @@ const VirtualTour = () => {
   return (
     <div>
       <iframe
-        src="https://360virtualtour.azurewebsites.net/#"
+        src="https://pwc360virtualtour.azurewebsites.net/#"
         title="360 Virtual Tour"
         width="100%"
         height="700px"

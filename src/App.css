@@ -174,19 +174,7 @@ button:not(:disabled) {
   padding: 25px 34px;
   position: relative;
 }
-.find-duty-hldr::before {
-  content: "";
-  /* width: 51px;
-  height: 52px; */
-  width: 42px;
-  height: 42px;
-  position: absolute;
-  /* background: url(./images/ellipse-left.png); */
-  background-size: cover;
-  /* left: -28px; */
-  left: -12px;
-  top: 43%;
-}
+
 .find-duty-hldr::after {
   content: "";
   width: 42px;

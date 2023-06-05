@@ -33,6 +33,7 @@
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-google-maps": "^9.4.5",
+    "react-native-compass-heading": "^1.4.2",
     "react-pdf": "^6.2.2",
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",

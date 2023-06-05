@@ -5,6 +5,7 @@ import CaptureData from "../components/CaptureData";
 import { validateResponseUser } from "../helper/validateResponse";
 import "../css/dutylist.css";
 import VisitTable from "../components/VisitTable";
+import HorizontalPlaceScroll from "../components/HorizontalPlaceScroll";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -13,7 +14,9 @@ import Box from "@mui/material/Box";
 import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
 import Button from "@mui/material/Button";
 import { get } from "../helper/apiHelper";
-
+import SearchPlaces from "../components/SearchPlaces";
+import Compass from "../components/Compass";
+import Fab from "@mui/material/Fab";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -67,9 +70,19 @@ function Home() {
   const [locationTypes, setLocationTypes] = React.useState(null);
   const [routeData, setRouteData] = React.useState(null);
 
-  const [comment, setComment] = React.useState("");
+  const [clickedLocationType, setClickedLocationType] = React.useState(null);
+
   const [selectedPoliceStation, setSelectedPoliceStation] =
     React.useState(null);
+
+  const locationTypeClickHandler = (id) => {
+    if (clickedLocationType !== id) {
+      setClickedLocationType(id);
+    } else {
+      setClickedLocationType(null);
+    }
+  };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -96,7 +109,6 @@ function Home() {
         (route) => route.locations
       );
       setLocations(allLocations);
-      console.log("allLocations====>", allLocations);
     } else {
       setLoading(false);
     }
@@ -232,8 +244,6 @@ function Home() {
   );
 
   const selectedPoliceStationCallback = (data) => {
-    console.log(data);
-
     setSelectedPoliceStation(data);
   };
 
@@ -241,8 +251,8 @@ function Home() {
     const source = `${reCenterLoocation?.lat},${reCenterLoocation?.lng}`;
     window.location.href = `#/navigation/${source}/${destination}?sourcePlaceID=&destinationPlaceId=${destinationId}`;
   };
-  console.log("-0000000000000000000000locations", locations);
-  // console.log("-findTotalVisitedCount", findTotalVisitedCount?.length);
+
+  console.log("---locations->", locations);
   return (
     <>
       <>
@@ -262,33 +272,23 @@ function Home() {
         )}
       </>{" "}
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider", margin: 2 }}>
-          <div className="container find-duty-hldr mb-4">
-            {/* <div className="datepicker">
-              <div className="mb-3 mt-0">
-                <FormControl size="small" fullWidth>
-                  <AutocompliteInput
-                    data={locations}
-                    onchangeCallback={selectedPoliceStationCallback}
-                  />
-                </FormControl>
-              </div>
-            </div> */}
-            <div className="time-picker-hldr">
-              {locations?.slice(0, 3)?.map((data) => (
-                <div
-                  className="time-hldr"
-                  onClick={() =>
-                    findPlace(`${data?.lat},${data?.long}`, data?.id)
-                  }
-                >
-                  <div className="time">{data?.name}</div>
-                  <div className="time-icon">
-                    <img src="../images/icon-time.png" alt="" />
-                  </div>
-                </div>
-              ))}
-            </div>
+        <Box sx={{ borderBottom: 1, margin: 0 }}>
+          <div style={{ marginTop: 20 }}>
+            {reCenterLoocation && (
+              <HorizontalPlaceScroll
+                locations={locations}
+                findPlace={findPlace}
+              />
+            )}
+          </div>
+          {locations && (
+            <SearchPlaces
+              locations={locations}
+              destinationPlaceId={null}
+              sourcePlaceID={null}
+            />
+          )}
+          {/* <div className="container find-duty-hldr mb-4">
             <div className="container">
               <button
                 className="find-btn"
@@ -306,7 +306,7 @@ function Home() {
                 </div>
               </button>
             </div>
-          </div>
+          </div> */}
         </Box>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -328,12 +328,11 @@ function Home() {
           <div style={{ width: "auto", height: "60vh" }}>
             {!loading && locations && reCenterLoocation ? (
               <Map
+                locations={locations}
                 defaultCenter={reCenterLoocation}
                 defaultZoom={16}
                 currentLocation={currentLocation}
-                user={user}
                 isInsideCircle={isInsideCircle}
-                locations={locations}
                 handleOpen={handleOpen}
                 reCenterLoocation={reCenterLoocation}
               />
@@ -346,14 +345,26 @@ function Home() {
             )}
             <div className="container grey-location">
               <div className="row routecard">
-                <div className="col-9">
+                <div className="col-4">
                   <p className="text-black">
                     {" "}
                     {window.site_text(`pages.map.re_center`)}
                   </p>
                 </div>
+                <div className="col-5">
+                  <Fab
+                    color="secondary"
+                    aria-label="add"
+                    style={{
+                      background: "#ad0004",
+                    }}
+                  >
+                    <Compass />
+                  </Fab>
+                </div>
+
                 <div
-                  className="col-2"
+                  className="col-3"
                   style={{ marginTop: "-4rem" }}
                   onClick={() => getCurrentLocation()}
                 >
@@ -380,6 +391,7 @@ function Home() {
         style={{
           display: "flex",
           overflowX: "scroll",
+          paddingTop: "2rem",
         }}
       >
         {locationTypes?.map((data, index) => {
@@ -388,6 +400,10 @@ function Home() {
               variant="outlined"
               size="small"
               style={{ margin: 10, border: "1px solid #343e42" }}
+              // onClick={() =>
+              //   (window.location.href = `#/nearest-locations/${data?.id}`)
+              // }
+              onClick={() => locationTypeClickHandler(data?.id)}
             >
               <span style={{ padding: 10 }}>
                 {data?.name}

@@ -28,7 +28,8 @@ export function UserLayout(Body, type) {
     <>
       {type === "back_button" ? <BackHeader /> : <UserBAckScreenHeader />}
       <Body />
-      {/* <Footer /> */}
+
+      <Footer />
     </>
   );
 }

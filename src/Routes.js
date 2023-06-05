@@ -14,6 +14,7 @@ import ListOfUser from "./Pages/Admin/ListOfUser";
 import AdminLogin from "./Pages/Admin/AdminLogin";
 import UserLogin from "./Pages/UserLogin";
 import LandingPage from "./Pages/LandingPage";
+import NearestLocations from "./Pages/NearestLocations";
 import RouteReport from "./Pages/Admin/RouteReport";
 import Dashboard from "./Pages/Admin/Dashboard";
 import TebleReport from "./Pages/Admin/TebleReport";
@@ -42,6 +43,11 @@ class Routing extends React.Component {
           exact
           path="/virtualtour"
           element={UserLayout(VirtualTour, "back_button")}
+        />
+        <Route
+          exact
+          path="/nearest-locations/:id"
+          element={UserLayout(NearestLocations, "back_button")}
         />
         {/* <Route exact path="/home" element={UserHeaderlessLayout(Home)} /> */}
         <Route

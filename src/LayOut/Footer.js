@@ -1,26 +1,13 @@
 import React from "react";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <div className="container footer mt-auto py-0">
-      <footer className="footer-nav">
-        <div className="d-flex justify-content-between">
-          <div>
-            <a href="#/home">
-              <i className="bi bi-house-door-fill"></i>
-            </a>
-          </div>
-          <div>
-            <i className="bi bi-list-ul"></i>
-          </div>
-          <div>
-            <i className="bi bi-envelope"></i>
-          </div>
-          <div>
-            <i className="bi bi-person"></i>
-          </div>
-        </div>
-      </footer>
-    </div>
+    <footer className="footer">
+      <center>
+        <p style={{ fontSize: 12 }}>M3-App || m3-app.netlify.app</p>
+      </center>
+    </footer>
   );
-}
+};
+
+export default Footer;

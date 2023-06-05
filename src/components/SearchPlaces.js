@@ -12,9 +12,6 @@ const SearchPlaces = ({
   destinationPlaceId = null,
   sourcePlaceID = null,
 }) => {
-  console.log("sourcePlaceID==========>", sourcePlaceID);
-  console.log("destinationPlaceId==========>", destinationPlaceId);
-
   const [loading, setLoading] = React.useState(false);
   const [selectedSource, setSelectedSource] = React.useState(null);
   const [selectedDestination, setSelectedDestination] = React.useState(null);
@@ -39,12 +36,11 @@ const SearchPlaces = ({
         (val) => Number(val?.id) === Number(sourcePlaceID)
       );
 
-      console.log("findSPlace=====++++++++++=====>", findSPlace);
       setSelectedSource(findSPlace);
     } else {
       getCurrentLocation();
     }
-  }, [sourcePlaceID, destinationPlaceId]);
+  }, [sourcePlaceID, destinationPlaceId, locations]);
 
   const selectSourceLocation = (data) => {
     setSelectedSource(data);
@@ -54,8 +50,6 @@ const SearchPlaces = ({
   };
 
   const findPlace = async () => {
-    console.log("selectedSource", selectedSource);
-    console.log("selectedDestination", selectedDestination);
     const source = `${selectedSource?.lat},${selectedSource?.long}`;
     const destination = `${selectedDestination?.lat},${selectedDestination?.long}`;
     window.location.replace(
@@ -79,7 +73,7 @@ const SearchPlaces = ({
     <>
       {!loading ? (
         <>
-          <Box sx={{ borderBottom: 1, borderColor: "divider", margin: 2 }}>
+          <Box sx={{ margin: 2 }}>
             <div className="container find-duty-hldr mb-4">
               <FormControl>
                 <FormLabel id="demo-controlled-radio-buttons-group">
@@ -96,11 +90,13 @@ const SearchPlaces = ({
                     value="0"
                     control={<Radio />}
                     label={window.site_text(`pages.map.currnt_location`)}
+                    size="small"
                   />
                   <FormControlLabel
                     value="1"
                     control={<Radio />}
                     label={window.site_text(`pages.map.custom_location`)}
+                    size="small"
                   />
                 </RadioGroup>
               </FormControl>

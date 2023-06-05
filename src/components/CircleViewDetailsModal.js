@@ -26,8 +26,6 @@ const style = {
 };
 
 export default function Map({ open, onClose, currentLocation, ...props }) {
-  console.log("---------props-->", props?.clickedPlace);
-
   const findPlace = async () => {
     const source = `${currentLocation?.lat},${currentLocation?.lng}`;
     const destination = `${props?.clickedPlace?.lat},${props?.clickedPlace?.long}`;

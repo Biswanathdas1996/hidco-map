@@ -5,10 +5,7 @@ export const MAP_KEY = "AIzaSyAet8Mk1nPvOn_AebLE5ZxXoGejOD8tPzA";
 
 export default function Map({
   defaultZoom,
-
-  handleClick,
   currentLocation,
-  user,
   isInsideCircle,
   locations,
   handleOpen,
@@ -18,6 +15,17 @@ export default function Map({
 
   const [map, setMap] = React.useState(null);
   const [marker, setMarker] = React.useState(null);
+
+  // Handle device orientation change
+  function handleOrientationChange(event) {
+    const alpha = event.alpha; // Device's front-to-back direction
+
+    // Use the alpha value to rotate the map or perform any other actions
+    // Example: Rotate the map based on device orientation
+    if (map) {
+      map.setHeading(alpha);
+    }
+  }
 
   useEffect(() => {
     // Load the Google Maps JavaScript API script dynamically
@@ -35,6 +43,7 @@ export default function Map({
     // Clean up the script tag
     return () => {
       document.body.removeChild(script);
+      window.removeEventListener("deviceorientation", handleOrientationChange);
     };
   }, [isInsideCircle]);
 
@@ -50,9 +59,12 @@ export default function Map({
   const initMap = () => {
     // Create a new Google Map instance
     const map = new window.google.maps.Map(document.getElementById("map"), {
-      center: currentLocation, // Initial position
+      center: reCenterLoocation, // Initial position
       zoom: defaultZoom, // Initial zoom level
     });
+
+    // Add device orientation event listener
+    window.addEventListener("deviceorientation", handleOrientationChange);
 
     // Add a marker to the map
 
@@ -110,7 +122,6 @@ export default function Map({
         circle.addListener("click", () => {
           handleOpen(val);
           // Handle the circle click event here
-          console.log("Circle clicked!");
         });
       });
 
